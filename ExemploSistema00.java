@@ -54,9 +54,25 @@ public class ExemploSistema00{
 
 		botaoCadastrar.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
+				Cadastrar();
+			}
+		});
 
+		botaoEditar.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				editar();
+			}
+		});
 
-				String nome = campoNome.getText();
+		tela.setVisible(true);
+	}
+
+	private static void editar(){
+
+	}
+
+	private static void Cadastrar(){
+			String nome = campoNome.getText();
 				if(nome.isEmpty()){
 					JOptionPane.showMessageDialog(null,
 						"Informe um nome!");
@@ -72,8 +88,5 @@ public class ExemploSistema00{
 				JOptionPane.showMessageDialog(null, nome
 					+ " Cadastrado com Sucesso");
 			}
-		});
 
-		tela.setVisible(true);
-	}
 }
