@@ -1,9 +1,12 @@
 package exemplo06;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import static javax.swing.JFrame.EXIT_ON_CLOSE;
+import javax.swing.JOptionPane;
 
 /**
  * @author Logan Michel
@@ -21,6 +24,8 @@ public class ExemploJCheckbox01 implements JFrameBaseInterface{
         gerarDimensoes();
         gerarLocalizacoes();
         adicionarComponentes();
+        acaoBotaoLimpar();
+        acaoBotaoSalvar();
         jFrame.setVisible(true);
     }
 
@@ -63,6 +68,33 @@ public class ExemploJCheckbox01 implements JFrameBaseInterface{
         jButtonSalvar.setSize(100, 20);
         jCheckBoxEuAceitoOsTermos.setSize(250, 20);
         jCheckBoxEuLiOsTermos.setSize(250, 20);
+    }
+    
+    public void acaoBotaoLimpar(){
+        jButtonLimpar.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                jCheckBoxEuLiOsTermos.setSelected(false);
+                jCheckBoxEuAceitoOsTermos.setSelected(false);
+            }
+        });
+    }
+    
+    public void acaoBotaoSalvar(){
+        jButtonSalvar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if(!jCheckBoxEuLiOsTermos.isSelected()){
+                    JOptionPane.showMessageDialog(null, "Leia os Termos");
+                    return;
+                }
+                if(!jCheckBoxEuAceitoOsTermos.isSelected()){
+                    JOptionPane.showMessageDialog(null, "Aceite os Termos");
+                    return;
+                }
+                JOptionPane.showMessageDialog(null, "Você acaba de vender livros");
+            }
+        });
     }
   
 }
